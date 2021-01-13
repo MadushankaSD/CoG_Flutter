@@ -1,3 +1,5 @@
+import 'package:cloudofgoods/manifests/manifestPage.dart';
+import 'package:cloudofgoods/notification/notificationPannel.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -40,7 +42,9 @@ class _HomeState extends State<Home> {
                         flex: 1,
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.of(context).pushReplacementNamed('manifest');
+                            Navigator.push(context,MaterialPageRoute(builder: (context){
+                              return Manifests();
+                            }));
                           },
                           child: Column(
                             children: [
@@ -109,15 +113,42 @@ class _HomeState extends State<Home> {
                 children: [
                   GestureDetector(
                     onTap: (){
-                      Navigator.of(context).pushReplacementNamed('notification');
+                      Navigator.push(context,MaterialPageRoute(builder: (context){
+                        return NotificationAll();
+                      }));
                     },
-                    child: Image.asset("assets/images/notification.png",
+                    child:Stack(
+                      children: [
+                        Image.asset("assets/images/notification.png",),
+                        Positioned(
+                          top: 0,
+                          right: 6,
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black38.withOpacity(0.5),
+                                  spreadRadius: 3,
+                                  blurRadius: 3,
+                                )
+                              ]
+                            ),
+                            child: Text("3 ",style: TextStyle(color: Colors.white),),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 7),
-                    child:Text("Notification",style: TextStyle(fontSize: 17),),
-                  )
+                    child:Text("Notification",style: TextStyle(fontSize: 17),
+                    ),
+                  ),
                 ],
               ),
               padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.02),

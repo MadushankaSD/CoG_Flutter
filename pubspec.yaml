@@ -34,6 +34,8 @@ dependencies:
   google_fonts: ^1.1.1
   hexcolor: ^1.0.4
   circular_check_box: ^1.0.4
+  flutter_local_notifications: ^3.0.3
+  onesignal: ^1.1.0
 
 dev_dependencies:
   flutter_test:
