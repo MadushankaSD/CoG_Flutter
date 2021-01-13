@@ -1,17 +1,16 @@
 import 'package:cloudofgoods/common/main_tab.dart';
-import 'package:cloudofgoods/manifests/pannel/deliverTab/deliveriesPannel.dart';
-import 'package:cloudofgoods/manifests/pannel/drawer.dart';
-import 'package:cloudofgoods/manifests/pannel/productTab/productpannel.dart';
 import 'package:cloudofgoods/manifests/pannel/toppanel.dart';
-import 'package:cloudofgoods/manifests/pannel/tripTab/tripPannel.dart';
 import 'package:flutter/material.dart';
 
-class Manifests extends StatefulWidget {
+class TripDetail extends StatefulWidget {
+  int trip_id;
+
   @override
-  _ManifestsState createState() => _ManifestsState();
+  _TripDetailState createState() => _TripDetailState();
+   TripDetail(this.trip_id);
 }
 
-class _ManifestsState extends State<Manifests> with SingleTickerProviderStateMixin{
+class _TripDetailState extends State<TripDetail> with SingleTickerProviderStateMixin{
   MainTabPannel main_tab;
   TabController main_tab_controller;
 
@@ -20,7 +19,7 @@ class _ManifestsState extends State<Manifests> with SingleTickerProviderStateMix
     // TODO: implement initState
     super.initState();
     main_tab_controller = TabController(length: 3, vsync: this);
-    main_tab = MainTabPannel("Products","Deliveries","Trips",main_tab_controller);
+    main_tab = MainTabPannel("Loaded list","Deliveries","Summary",main_tab_controller);
   }
 
   @override
@@ -32,12 +31,10 @@ class _ManifestsState extends State<Manifests> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      drawer: NavDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        title: Text("My Manifest"),
+        title: Text(super.widget.trip_id.toString()),
       ),
       body: Container(
         child: Column(
@@ -48,9 +45,12 @@ class _ManifestsState extends State<Manifests> with SingleTickerProviderStateMix
               child: TabBarView(
                 controller: main_tab_controller,
                 children: <Widget>[
-                  Center(child: Product()),
-                  Center(child: Deliveries()),
-                  Center(child: Trip(),)
+                  Container(color: Colors.red,),
+                  Container(color: Colors.green,),
+                  Container(color: Colors.yellowAccent,)
+                  // Center(child: Product()),
+                  // Center(child: Deliveries()),
+                  // Center(child: Trip(),)
                 ],
               ),
             )

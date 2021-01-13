@@ -1,5 +1,4 @@
-
-import 'package:cloudofgoods/manifests/pannel/common/nested_tab.dart';
+import 'package:cloudofgoods/common/nested_tab.dart';
 import 'package:cloudofgoods/manifests/pannel/productTab/nestedTab/processedTabPannel.dart';
 import 'package:cloudofgoods/manifests/pannel/productTab/nestedTab/product_all_tab_panel.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,7 +19,7 @@ class _ProductState extends State<Product> with SingleTickerProviderStateMixin{
     // TODO: implement initState
     super.initState();
     tabcontroller=TabController(length: 3,vsync: this);
-    nested_tab = NestedTab("Product",3,tabcontroller);
+    nested_tab = NestedTab("Product",tabcontroller);
   }
 
   @override

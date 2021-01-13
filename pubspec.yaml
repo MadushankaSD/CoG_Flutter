@@ -36,6 +36,7 @@ dependencies:
   circular_check_box: ^1.0.4
   flutter_local_notifications: ^3.0.3
   onesignal: ^1.1.0
+  connectivity: ^0.4.2
 
 dev_dependencies:
   flutter_test:

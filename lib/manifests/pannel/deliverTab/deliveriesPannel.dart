@@ -1,5 +1,5 @@
 import 'package:circular_check_box/circular_check_box.dart';
-import 'package:cloudofgoods/manifests/pannel/common/nested_tab.dart';
+import 'package:cloudofgoods/common/nested_tab.dart';
 import 'package:cloudofgoods/manifests/pannel/deliverTab/nested_tab/deliver_all_tab_pannel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class _DeliveriesState extends State<Deliveries>
     // TODO: implement initState
     super.initState();
     tabcontroller = TabController(length: 3, vsync: this);
-    nested_tab = NestedTab("Deliveries", 3, tabcontroller);
+    nested_tab = NestedTab("Deliveries",tabcontroller);
   }
 
   @override
@@ -91,7 +91,8 @@ class _DeliveriesState extends State<Deliveries>
                                                     Navigator.pop(context, false),
                                                 child: Text("Cancel"))
                                           ],
-                                        ));
+                                        )
+                                );
                               },
                               child: ClipRRect(
                                 child: Image.asset(

@@ -1,5 +1,7 @@
 import 'package:cloudofgoods/manifests/manifestPage.dart';
+import 'package:cloudofgoods/manifests/pannel/tripTab/tripPannel.dart';
 import 'package:cloudofgoods/notification/notificationPannel.dart';
+import 'package:cloudofgoods/trip/tripPanelMain.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -16,15 +18,12 @@ class _HomeState extends State<Home> {
           child:Container(
           child: Column(
             children: [
-              Hero(
-                tag: 'splash',
-                child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Padding(
-                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05),
-                        child: Image.asset('assets/images/cloud_of_goods.png',
-                            width: MediaQuery.of(context).size.width * 0.7))),
-              ),
+              Align(
+                  alignment: Alignment.topCenter,
+                  child: Padding(
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.05),
+                      child: Image.asset('assets/images/cloud_of_goods.png',
+                          width: MediaQuery.of(context).size.width * 0.7))),
               SizedBox(height: 2,),
               Text(
                 "Control Center",
@@ -67,7 +66,9 @@ class _HomeState extends State<Home> {
                         flex: 1,
                         child: GestureDetector(
                             onTap: () {
-                              print('Trip Clicked');
+                              Navigator.push(context,MaterialPageRoute(builder: (context){
+                                return TripMain();
+                              }));
                             },
                             child: Column(
                               children: [
@@ -107,8 +108,7 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-
-            Padding(
+              Padding(
               child:Column(
                 children: [
                   GestureDetector(
@@ -138,7 +138,7 @@ class _HomeState extends State<Home> {
                                 )
                               ]
                             ),
-                            child: Text("3 ",style: TextStyle(color: Colors.white),),
+                            child: Text("3",style: TextStyle(color: Colors.white),),
                           ),
                         )
                       ],
@@ -153,7 +153,7 @@ class _HomeState extends State<Home> {
               ),
               padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.02),
             ),
-            Padding(
+              Padding(
                 child:  Column(
                   children: [
                     GestureDetector(
@@ -171,7 +171,6 @@ class _HomeState extends State<Home> {
                 ),
                 padding: EdgeInsets.only(top:MediaQuery.of(context).size.height*0.07)
             ),
-
             ],
           ),
 

@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 
 class NestedTab extends StatefulWidget {
   final String name;
-  final int length_of_tabs;
   final TabController tabController;
 
   @override
   NestedTabState createState() => NestedTabState();
 
-  NestedTab(this.name,this.length_of_tabs, this.tabController);
+  NestedTab(this.name,this.tabController);
 }
 
 class NestedTabState extends State<NestedTab> with SingleTickerProviderStateMixin{
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +37,7 @@ class NestedTabState extends State<NestedTab> with SingleTickerProviderStateMixi
                     controller: super.widget.tabController,
                     labelPadding: EdgeInsets.all(0),
                     labelStyle: TextStyle(
-                        fontSize: 12, fontWeight: FontWeight.bold),
+                    fontSize: 12, fontWeight: FontWeight.bold),
                     labelColor: Colors.blue,
                     unselectedLabelColor: Colors.black54,
                     tabs: <Widget>[
