@@ -37,6 +37,7 @@ dependencies:
   flutter_local_notifications: ^3.0.3
   onesignal: ^1.1.0
   connectivity: ^0.4.2
+  group_button: ^1.1.0
 
 dev_dependencies:
   flutter_test:

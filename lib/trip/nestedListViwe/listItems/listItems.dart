@@ -1,5 +1,6 @@
 import 'package:cloudofgoods/common/main_tab.dart';
 import 'package:cloudofgoods/manifests/pannel/toppanel.dart';
+import 'package:cloudofgoods/trip/nestedListViwe/listItems/loadedlist/trip_load_list.dart';
 import 'package:flutter/material.dart';
 
 class TripDetail extends StatefulWidget {
@@ -45,7 +46,7 @@ class _TripDetailState extends State<TripDetail> with SingleTickerProviderStateM
               child: TabBarView(
                 controller: main_tab_controller,
                 children: <Widget>[
-                  Container(color: Colors.red,),
+                  Center(child:LoadList()),
                   Container(color: Colors.green,),
                   Container(color: Colors.yellowAccent,)
                   // Center(child: Product()),
