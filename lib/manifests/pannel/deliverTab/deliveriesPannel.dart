@@ -1,8 +1,10 @@
-import 'package:circular_check_box/circular_check_box.dart';
-import 'package:cloudofgoods/common/nested_tab.dart';
-import 'package:cloudofgoods/manifests/pannel/deliverTab/nested_tab/deliver_all_tab_pannel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:circular_check_box/circular_check_box.dart';
+import '../../../common/nested_tab.dart';
+import '../deliverTab/nested_tab/deliver_all_tab_pannel.dart';
+
 
 class Deliveries extends StatefulWidget {
   @override
@@ -12,21 +14,21 @@ class Deliveries extends StatefulWidget {
 class _DeliveriesState extends State<Deliveries>
     with SingleTickerProviderStateMixin {
   bool selected=true ;
-  TabController tabcontroller;
-  NestedTab nested_tab;
+  TabController tabController;
+  NestedTab nestedTab;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabcontroller = TabController(length: 3, vsync: this);
-    nested_tab = NestedTab("Deliveries",tabcontroller);
+    tabController = TabController(length: 3, vsync: this);
+    nestedTab = NestedTab("Deliveries",tabController);
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    tabcontroller.dispose();
+    tabController.dispose();
     super.dispose();
   }
 
@@ -36,7 +38,7 @@ class _DeliveriesState extends State<Deliveries>
       children: [
         Align(
           alignment: Alignment.topCenter,
-          child: nested_tab,
+          child: nestedTab,
         ),
         Padding(
           padding: EdgeInsets.only(top: 50),
@@ -47,7 +49,7 @@ class _DeliveriesState extends State<Deliveries>
               Expanded(
                 flex: 4,
                 child: TabBarView(
-                  controller: tabcontroller,
+                  controller: tabController,
                   children: <Widget>[
                     Container(child: DeliverAllTab()),
                     Container(color: Colors.brown),
@@ -208,7 +210,6 @@ class _DeliveriesState extends State<Deliveries>
                                                   shrinkWrap: true,
                                                   itemCount: 3,
                                                   itemBuilder: (BuildContext context, int index) {
-                                                    var someBooleanValue = false;
                                                     return ListTile(
                                                       leading: ClipRRect(
                                                           child: Image.asset(

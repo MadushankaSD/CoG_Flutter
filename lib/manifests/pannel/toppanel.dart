@@ -18,7 +18,6 @@ class _TopPanelState extends State<TopPanel> {
     return formatted;
   }
 
-  var _dateTime;
   var selectedvalue;
   var _citys = ["All cities","SriLanka", "India", "Canada", "San Francisco"];
 

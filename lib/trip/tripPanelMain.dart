@@ -1,7 +1,7 @@
-import 'package:cloudofgoods/manifests/pannel/drawer.dart';
-import 'package:cloudofgoods/manifests/pannel/toppanel.dart';
-import 'package:cloudofgoods/trip/nestedListViwe/listPannel.dart';
 import 'package:flutter/material.dart';
+import '../manifests/pannel/drawer.dart';
+import '../manifests/pannel/toppanel.dart';
+import '../trip/nestedListViwe/listPannel.dart';
 
 class TripMain extends StatefulWidget {
   @override

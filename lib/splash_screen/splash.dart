@@ -1,8 +1,7 @@
-import 'dart:async';
-import 'package:cloudofgoods/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
+import 'dart:async';
 
 import 'package:flutter/services.dart';
 
@@ -12,23 +11,23 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  double paddingbottom = 30;
-  bool is_conneted = false;
+  double paddingBottom = 30;
+  bool isConnected = false;
 
   Future<void> startTimer() async {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         setState(() {
-          is_conneted = true;
+          isConnected = true;
         });
         Timer(Duration(seconds: 2), () {
           setState(() {
-            paddingbottom = MediaQuery.of(context).size.height * 0.855;
+            paddingBottom = MediaQuery.of(context).size.height * 0.855;
           });
         });
 
-        if(is_conneted) {
+        if(isConnected) {
           Timer(Duration(seconds: 3), () {
             Navigator.of(context).pushReplacementNamed('home');
           });
@@ -55,12 +54,12 @@ class _SplashScreenState extends State<SplashScreen> {
           AnimatedContainer(
             duration: Duration(seconds: 1),
             alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.only(bottom: paddingbottom),
+            padding: EdgeInsets.only(bottom: paddingBottom),
             child: Image.asset('assets/images/cloud_of_goods.png',
                 width: MediaQuery.of(context).size.width * 0.7),
           ),
           Visibility(
-            visible: !is_conneted,
+            visible: !isConnected,
             child: Center(
               child: Container(
                child: InternetError()

@@ -1,32 +1,35 @@
-import 'package:cloudofgoods/common/main_tab.dart';
-import 'package:cloudofgoods/manifests/pannel/toppanel.dart';
-import 'package:cloudofgoods/trip/nestedListViwe/listItems/loadedlist/trip_load_list.dart';
 import 'package:flutter/material.dart';
+import '../../../common/main_tab.dart';
+import '../../../manifests/pannel/toppanel.dart';
+import '../listItems/deliveries/trip_delivery_pannel.dart';
+import '../listItems/loadedlist/trip_load_list.dart';
+import '../listItems/summary/trip_summery_pannel.dart';
+
 
 class TripDetail extends StatefulWidget {
-  int trip_id;
+  final int tripId;
 
   @override
   _TripDetailState createState() => _TripDetailState();
-   TripDetail(this.trip_id);
+   TripDetail(this.tripId);
 }
 
 class _TripDetailState extends State<TripDetail> with SingleTickerProviderStateMixin{
-  MainTabPannel main_tab;
-  TabController main_tab_controller;
+  MainTabPannel mainTab;
+  TabController mainTabController;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    main_tab_controller = TabController(length: 3, vsync: this);
-    main_tab = MainTabPannel("Loaded list","Deliveries","Summary",main_tab_controller);
+    mainTabController = TabController(length: 3, vsync: this);
+    mainTab = MainTabPannel("Loaded list","Deliveries","Summary",mainTabController);
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    main_tab_controller.dispose();
+    mainTabController.dispose();
     super.dispose();
   }
 
@@ -35,20 +38,20 @@ class _TripDetailState extends State<TripDetail> with SingleTickerProviderStateM
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(super.widget.trip_id.toString()),
+        title: Text(super.widget.tripId.toString()),
       ),
       body: Container(
         child: Column(
           children: [
             TopPanel(),
-            main_tab,
+            mainTab,
             Expanded(
               child: TabBarView(
-                controller: main_tab_controller,
+                controller: mainTabController,
                 children: <Widget>[
                   Center(child:LoadList()),
-                  Container(color: Colors.green,),
-                  Container(color: Colors.yellowAccent,)
+                  Container(child: TripDeliveries(),),
+                  Container(child: TripSummary(),)
                   // Center(child: Product()),
                   // Center(child: Deliveries()),
                   // Center(child: Trip(),)

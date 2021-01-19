@@ -1,8 +1,8 @@
-import 'package:cloudofgoods/manifests/manifestPage.dart';
-import 'package:cloudofgoods/manifests/pannel/tripTab/tripPannel.dart';
-import 'package:cloudofgoods/notification/notificationPannel.dart';
-import 'package:cloudofgoods/trip/tripPanelMain.dart';
 import 'package:flutter/material.dart';
+import '../manifests/manifestPage.dart';
+import '../notification/notificationPannel.dart';
+import '../trip/tripPanelMain.dart';
+
 
 class Home extends StatefulWidget {
   @override

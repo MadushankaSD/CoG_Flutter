@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../../../../common/shape_cliper.dart';
 
-class DeliverAllTab extends StatefulWidget {
+import '../../../../../common/shape_cliper.dart';
+import '../../../../../manifests/pannel/deliverTab/nested_tab/deliver_all_tab_pannel.dart';
+
+class TripDeliveryAll extends StatefulWidget  {
   @override
-  _DeliverAllTabState createState() => _DeliverAllTabState();
+  _TripDeliveryAllState createState() => _TripDeliveryAllState();
 }
 
-class _DeliverAllTabState extends State<DeliverAllTab>  with AutomaticKeepAliveClientMixin {
+class _TripDeliveryAllState extends State<TripDeliveryAll> with AutomaticKeepAliveClientMixin{
+
+  bool isExpanded = false;
+
   Future<List<Album>> getAlbum;
-  int selectedRadio;
 
   @override
   // TODO: implement wantKeepAlive
@@ -21,15 +26,8 @@ class _DeliverAllTabState extends State<DeliverAllTab>  with AutomaticKeepAliveC
   void initState() {
     // TODO: implement initState
     super.initState();
-    selectedRadio = 0;
     setState(() {
       getAlbum = _getAlbum();
-    });
-  }
-
-  setSelectedRadio(int val) {
-    setState(() {
-      selectedRadio = val;
     });
   }
 
@@ -68,29 +66,31 @@ class _DeliverAllTabState extends State<DeliverAllTab>  with AutomaticKeepAliveC
               onRefresh: _pullRefresh,
               child: ListView.separated(
                 separatorBuilder: (BuildContext context,int index)=> Divider(
-                  color: Colors.black45,
-                  indent: 10,
-                  endIndent: 10,
-                  height: 10,
+                  color: Colors.black,
+                  indent: 20,
+                  endIndent: 20,
+                  height: 30,
                 ),
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Transform.scale(
-                              scale: 1.2,
-                              child: Radio(value: 0,
+                              scale: 1,
+                              child: Radio(
+                                  value: 0,
                                   focusColor: Colors.blue,
-                                  splashRadius: 10,
+                                  splashRadius: 8,
                                   groupValue: 1,
                                   onChanged: (val){
 
                                   }
-                               ),
+                              ),
                             ),
                           ],
                         ),
@@ -98,12 +98,22 @@ class _DeliverAllTabState extends State<DeliverAllTab>  with AutomaticKeepAliveC
                           flex: 6,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: <Widget>[
                               Row(
                                 children: [
-                                  Flexible(child: Text("Pro qty of prod name",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black45)))
+                                  Flexible(
+                                      child: Text(
+                                          "This is sample of dummy dasd fkajhf sadtaydt asdyayd sdgajdg sdgaj",
+                                          // maxLines: this.isExpanded ? sample.length : 2,
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black45)
+                                      )
+                                  )
                                 ],
                               ),
+                              SizedBox(height: 3,),
                               Row(
                                 children: [
                                   Flexible(child: Text("8.00 AM - 11.00 AM",style: TextStyle(fontSize: 16,color: Colors.black45)))
@@ -117,34 +127,19 @@ class _DeliverAllTabState extends State<DeliverAllTab>  with AutomaticKeepAliveC
                             ],
                           ),
                         ),
-                        Expanded(
-                          flex: 2,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              ClipPath(
-                                clipper: MyCliper(),
-                                child: Container(
-                                  height: 25,
-                                  width: 85,
-                                  color: Colors.blue,
-                                  child: Center(child: Text("Drop-off")),
-                                ),
+                        Column(
+                          children: [
+                            ClipPath(
+                              clipper: MyCliper(),
+                              child: Container(
+                                height: 25,
+                                width: 85,
+                                color: HexColor("#dbecf9"),
+                                child: Center(child: Text("Drop-off")),
                               ),
-                              SizedBox(height: 10,),
-                              Container(
-                                alignment: Alignment.bottomCenter,
-                                child: CircleAvatar(
-                                  radius: 20,
-                                  backgroundImage: NetworkImage(
-                                      snapshot.data[index].thumbnil
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 10,)
-                            ],
-                          ),
+                            ),
+                            SizedBox(height: 30,)
+                          ],
                         ),
                       ],
                     ),
@@ -157,17 +152,4 @@ class _DeliverAllTabState extends State<DeliverAllTab>  with AutomaticKeepAliveC
       ),
     );
   }
-}
-
-
-
-
-class Album {
-  final int albumId;
-  final int id;
-  final String title;
-  final String url;
-  final String thumbnil;
-
-  Album(this.albumId, this.id, this.title, this.url, this.thumbnil);
 }

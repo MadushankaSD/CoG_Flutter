@@ -1,8 +1,9 @@
-import 'package:cloudofgoods/common/nested_tab.dart';
-import 'package:cloudofgoods/manifests/pannel/productTab/nestedTab/processedTabPannel.dart';
-import 'package:cloudofgoods/manifests/pannel/productTab/nestedTab/product_all_tab_panel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../common/nested_tab.dart';
+import '../productTab/nestedTab/processedTabPannel.dart';
+import '../productTab/nestedTab/product_all_tab_panel.dart';
+
 
 class Product extends StatefulWidget {
   @override
@@ -11,21 +12,21 @@ class Product extends StatefulWidget {
 
 class _ProductState extends State<Product> with SingleTickerProviderStateMixin{
 
-  TabController tabcontroller;
-  NestedTab nested_tab;
+  TabController tabController;
+  NestedTab nestedTab;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabcontroller=TabController(length: 3,vsync: this);
-    nested_tab = NestedTab("Product",tabcontroller);
+    tabController=TabController(length: 3,vsync: this);
+    nestedTab = NestedTab("Product",tabController);
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    tabcontroller.dispose();
+    tabController.dispose();
     super.dispose();
   }
 
@@ -36,7 +37,7 @@ class _ProductState extends State<Product> with SingleTickerProviderStateMixin{
       children: [
         Align(
           alignment: Alignment.topCenter,
-          child: nested_tab,
+          child: nestedTab,
         ),
         Padding(
           padding: EdgeInsets.only(top:50),
@@ -65,7 +66,7 @@ class _ProductState extends State<Product> with SingleTickerProviderStateMixin{
                Expanded(
                 flex: 1,
                 child: TabBarView(
-                  controller:tabcontroller,
+                  controller:tabController,
                   children: <Widget>[
                     Container(child: AllTab(),),
                     Container(child: TestClip(),),

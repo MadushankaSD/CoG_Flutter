@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AllTab extends StatefulWidget {
   @override
@@ -45,6 +44,7 @@ class _AllTabState extends State<AllTab>  with AutomaticKeepAliveClientMixin{
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       child: FutureBuilder(
         future: getAlbum,
@@ -91,11 +91,9 @@ class _AllTabState extends State<AllTab>  with AutomaticKeepAliveClientMixin{
                                   padding: EdgeInsets.only(left: 10),
                                   alignment: Alignment.centerLeft,
                                   height: MediaQuery.of(context).size.height*0.09,
-                                  child: Flexible(
-                                      child: Text(snapshot.data[index].title,
-                                        overflow: TextOverflow.visible,
-                                        softWrap: true,
-                                      )
+                                  child: Text(snapshot.data[index].title,
+                                    overflow: TextOverflow.visible,
+                                    softWrap: true,
                                   ),
                                 )
                               ],

@@ -1,10 +1,12 @@
-import 'package:cloudofgoods/common/main_tab.dart';
-import 'package:cloudofgoods/manifests/pannel/deliverTab/deliveriesPannel.dart';
-import 'package:cloudofgoods/manifests/pannel/drawer.dart';
-import 'package:cloudofgoods/manifests/pannel/productTab/productpannel.dart';
-import 'package:cloudofgoods/manifests/pannel/toppanel.dart';
-import 'package:cloudofgoods/manifests/pannel/tripTab/tripPannel.dart';
 import 'package:flutter/material.dart';
+
+import '../common/main_tab.dart';
+import '../manifests/pannel/deliverTab/deliveriesPannel.dart';
+import '../manifests/pannel/drawer.dart';
+import '../manifests/pannel/productTab/productpannel.dart';
+import '../manifests/pannel/toppanel.dart';
+import '../manifests/pannel/tripTab/tripPannel.dart';
+
 
 class Manifests extends StatefulWidget {
   @override
@@ -12,7 +14,9 @@ class Manifests extends StatefulWidget {
 }
 
 class _ManifestsState extends State<Manifests> with SingleTickerProviderStateMixin{
+  // ignore: non_constant_identifier_names
   MainTabPannel main_tab;
+  // ignore: non_constant_identifier_names
   TabController main_tab_controller;
 
   @override
