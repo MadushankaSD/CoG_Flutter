@@ -9,6 +9,8 @@ PODS:
     - Flutter
     - Reachability
   - Flutter (1.0.0)
+  - flutter_beep (0.0.1):
+    - Flutter
   - hexcolor (0.0.1):
     - Flutter
   - MTBBarcodeScanner (5.0.11)
@@ -26,6 +28,7 @@ DEPENDENCIES:
   - barcode_scanner (from `.symlinks/plugins/barcode_scanner/ios`)
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - Flutter (from `Flutter`)
+  - flutter_beep (from `.symlinks/plugins/flutter_beep/ios`)
   - hexcolor (from `.symlinks/plugins/hexcolor/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
@@ -46,6 +49,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/connectivity/ios"
   Flutter:
     :path: Flutter
+  flutter_beep:
+    :path: ".symlinks/plugins/flutter_beep/ios"
   hexcolor:
     :path: ".symlinks/plugins/hexcolor/ios"
   path_provider:
@@ -60,6 +65,7 @@ SPEC CHECKSUMS:
   barcode_scanner: 5ca5fc86f1f200498bbb3b5f352046918a36e5d2
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_beep: 54fb393b22dfa0f0e4573c81b1c74dd71c4e5af8
   hexcolor: fdfb9c4258ad96e949c2dbcdf790a62194b8aa89
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
