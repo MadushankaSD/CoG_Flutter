@@ -22,17 +22,20 @@ class _TripMainState extends State<TripMain> {
           children: [
             TopPanel(),
             TripList(),
-            Container(
-              height:100,
-              child: GestureDetector(
-                onTap: () {},
-                child: ClipRRect(
-                  child: Image.asset(
-                    "assets/images/add_trip/drawable-xhdpi/add_to_a_trip.png",
+            Padding(
+              padding: const EdgeInsets.only(bottom:8.0),
+              child: Container(height:100,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: ClipRRect(
+                    child: Image.asset(
+                      "assets/images/add_trip/drawable-xhdpi/add_to_a_trip.png",
+                    ),
                   ),
                 ),
               ),
             ),
+
           ],
         ),
       ),

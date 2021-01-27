@@ -1,9 +1,9 @@
-import 'package:cloudofgoods/trip/nestedListViwe/listItems/loadedlist/scanner/app_barcode_scanner_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../common/trip_topic_pannel.dart';
 import 'list_viwe.dart';
+import './scanner/app_barcode_scanner_widget.dart';
 
 class LoadList extends StatefulWidget {
   @override

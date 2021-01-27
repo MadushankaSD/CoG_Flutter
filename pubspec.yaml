@@ -27,26 +27,31 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.1
+  cupertino_icons: ^1.0.0
   font_awesome_flutter: ^8.11.0
   intl: ^0.16.1
   http: ^0.12.2
   google_fonts: ^1.1.1
   hexcolor: ^1.0.4
   circular_check_box: ^1.0.4
-#  flutter_local_notifications: ^3.0.3
   flutter_barcode_scanner: ^1.0.2
-#  onesignal: ^1.1.0
   connectivity: ^0.4.2
   grouped_list: ^3.7.1
+  provider: ^4.3.3
+  ai_barcode: ^1.1.4
+  flutter_beep: ^0.2.0
+  flutter_keyboard_visibility: ^4.0.2
+  rxdart: ^0.25.0
+#  flutter_local_notifications: ^3.0.3
+#  onesignal: ^1.1.0
 #  group_button: ^1.1.0
 #  custom_radio_grouped_button: ^1.0.6+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
+#  integration_test:
+#    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -70,6 +75,7 @@ flutter:
     - assets/images/power_on.png
     - assets/images/add_trip/drawable-xhdpi/add_to_a_trip.png
     - assets/images/edit_trip/drawable-xhdpi/group_3.png
+    - assets/images/power_button/drawable-xhdpi/start_bitton_active.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

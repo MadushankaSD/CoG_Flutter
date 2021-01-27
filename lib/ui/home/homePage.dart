@@ -1,11 +1,10 @@
-import 'package:cloudofgoods/common/connection_class.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import '../manifests/manifestPage.dart';
 import '../notification/notificationPannel.dart';
 import '../trip/tripPanelMain.dart';
-
+import '../common/connection_class.dart';
 
 class Home extends StatefulWidget {
   @override

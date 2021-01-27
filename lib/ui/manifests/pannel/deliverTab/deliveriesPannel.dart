@@ -57,9 +57,10 @@ class _DeliveriesState extends State<Deliveries>
                   ],
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Container(
+              Container(
+                height: MediaQuery.of(context).size.height * 0.13,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom:8.0),
                   child: Row(
                     children: [
                           Expanded(flex: 1, child: Container()),

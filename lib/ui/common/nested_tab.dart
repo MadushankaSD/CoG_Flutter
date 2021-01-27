@@ -33,7 +33,7 @@ class NestedTabState extends State<NestedTab> with SingleTickerProviderStateMixi
             width: MediaQuery.of(context).size.width * 0.45,
             child: Column(
               children: [
-                Flexible(
+                Expanded(
                   child: TabBar(
                     controller: super.widget.tabController,
                     isScrollable: true,

@@ -50,33 +50,36 @@ class _TripDeliveriesState extends State<TripDeliveries> with SingleTickerProvid
             ],
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height:90,
-              child: GestureDetector(
-                onTap: () {},
-                child: CircleAvatar(
-                  radius: 38,
-                  backgroundColor: HexColor("#4ea2e2"),
-                  child: Icon(Icons.play_arrow_outlined,size: 45,color: Colors.white,),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height:90,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    radius: 38,
+                    backgroundColor: HexColor("#4ea2e2"),
+                    child: Icon(Icons.play_arrow_outlined,size: 45,color: Colors.white,),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(width: MediaQuery.of(context).size.width*0.07),
-            Container(
-              height:90,
-              child: GestureDetector(
-                onTap: () {},
-                child: CircleAvatar(
-                  radius: 38,
-                  backgroundColor: HexColor("#4ea2e2"),
-                  child: Icon(Icons.location_on_outlined,size: 40,color: Colors.white,),
+              SizedBox(width: MediaQuery.of(context).size.width*0.07),
+              Container(
+                height:90,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    radius: 38,
+                    backgroundColor: HexColor("#4ea2e2"),
+                    child: Icon(Icons.location_on_outlined,size: 40,color: Colors.white,),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );
