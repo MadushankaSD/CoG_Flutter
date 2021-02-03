@@ -1,9 +1,14 @@
+import 'package:cloudofgoods/ui/manifests/pannel/deliverTab/nested_tab/deliver_open_tab_pannel.dart';
+import 'package:cloudofgoods/ui/manifests/pannel/deliverTab/nested_tab/deliver_process_tab_pannel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:circular_check_box/circular_check_box.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:http/http.dart';
+import 'package:provider/provider.dart';
 import '../../../common/nested_tab.dart';
 import 'nested_tab/deliver_all_tab_pannel.dart';
+import '../../../../notifires/notifires_delivery.dart';
 
 
 class Deliveries extends StatefulWidget {
@@ -17,6 +22,8 @@ class _DeliveriesState extends State<Deliveries>
   TabController tabController;
   NestedTab nestedTab;
 
+  Trip selectedTrip;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -24,6 +31,7 @@ class _DeliveriesState extends State<Deliveries>
     tabController = TabController(length: 3, vsync: this);
     nestedTab = NestedTab("Deliveries",tabController);
   }
+
 
   @override
   void dispose() {
@@ -51,9 +59,10 @@ class _DeliveriesState extends State<Deliveries>
                 child: TabBarView(
                   controller: tabController,
                   children: <Widget>[
+                    // Container(color: Colors.redAccent,),
                     Container(child: DeliverAllTab()),
-                    Container(color: Colors.brown),
-                    Container(color: Colors.amber),
+                    Container(child: DeliverProcessed(),),
+                    Container(child: DeliverOpenTab(),),
                   ],
                 ),
               ),
@@ -63,8 +72,8 @@ class _DeliveriesState extends State<Deliveries>
                   padding: const EdgeInsets.only(bottom:8.0),
                   child: Row(
                     children: [
-                          Expanded(flex: 1, child: Container()),
-                          Expanded(
+                      Expanded(flex: 1, child: Container()),
+                      Expanded(
                               flex: 3,
                               child: Container(
                                 child: GestureDetector(
@@ -104,69 +113,79 @@ class _DeliveriesState extends State<Deliveries>
                                   ),
                                 ),
                               )),
-                          Expanded(
+                      Expanded(
                               flex: 3,
                               child: Container(
                                 child: GestureDetector(
                                   onTap: () {
-                                    showDialog(
-                                        context: context,
+                                    showDialog(context: context,
                                         builder: (ctx)=>
                                         AlertDialog(
                                           title: Text("Select a trip"),
                                           shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(20))),
+                                              borderRadius: BorderRadius.all(Radius.circular(20))),
                                           actions: <Widget>[
-
                                             Container(
                                               alignment: Alignment.center,
                                               width: MediaQuery.of(ctx).size.width,
                                               height:70,
-                                              child: GestureDetector(
-                                                onTap: () {},
-                                                child: ClipRRect(
-                                                  child: Image.asset(
-                                                      "assets/images/edit_trip/drawable-xhdpi/group_3.png"),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  boxShadow: [BoxShadow(blurRadius: 20, color: Colors.black26, spreadRadius: 5)]
                                                 ),
+                                                child: Container(
+                                                    alignment: Alignment.center,
+                                                    child: new SizedBox(
+                                                        child: FloatingActionButton(
+                                                          elevation: 0,
+                                                          backgroundColor: HexColor("#4ea2e2"),
+                                                          child: Icon(Icons.add),
+                                                          onPressed: () {
+                                                            print(selectedTrip.toString());
+                                                            Navigator.of(ctx).pop();
+                                                          },)
+                                                    )
+                                                )
                                               ),
                                             )
                                           ],
-                                          content: SingleChildScrollView(
-                                            child: Container(
-                                              width: double.maxFinite,
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: <Widget>[
-                                                  Divider(),
-                                                  ConstrainedBox(
-                                                    constraints: BoxConstraints(
-                                                    maxHeight: MediaQuery.of(context).size.height * 0.3,
+                                          content:Container(
+                                                width: double.maxFinite,
+                                                child: Column(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: <Widget>[
+                                                    Divider(),
+                                                    ConstrainedBox(
+                                                      constraints: BoxConstraints(
+                                                      maxHeight: MediaQuery.of(context).size.height * 0.3,
+                                                      ),
+                                                      child: ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: tripList.length,
+                                                          itemBuilder: (BuildContext context, int index) {
+                                                            final _singleNotifire  = Provider.of<SingleNotifier>(context);
+                                                            return  ListTile(
+                                                              leading: Text(tripList[index].tripId),
+                                                              trailing: CircularCheckBox(
+                                                                  value: tripList[index].isSelected,
+                                                                  checkColor: Colors.white,
+                                                                  activeColor: Colors.green,
+                                                                  // inactiveColor: Colors.black,
+                                                                  // disabledColor: Colors.grey ,
+                                                                  onChanged: (value){
+                                                                    _singleNotifire.updateTrip(tripList[index]);
+                                                                    Trip getSelectedTrip = _singleNotifire.getSelectedTrip;
+                                                                    selectedTrip=getSelectedTrip;
+                                                                  },
+                                                              ),
+                                                            );
+                                                          }),
                                                     ),
-                                                    child: ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: 3,
-                                                        itemBuilder: (BuildContext context, int index) {
-                                                          return ListTile(
-                                                            leading: Text("Name of Driver"),
-                                                            trailing: CircularCheckBox(
-                                                                value: this.selected,
-                                                                checkColor: Colors.white,
-                                                                activeColor: Colors.green,
-                                                                // inactiveColor: Colors.black,
-                                                                disabledColor: Colors.grey ,
-                                                                onChanged: (val) => this.setState(() {
-                                                                  this.selected= !this.selected;
-                                                                })
-                                                            ),
-                                                          );
-                                                        }),
-                                                  ),
-                                                  Divider(),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
+                                                    Divider(),
+                                                  ],
+                                                ),
+                                              )
                                         )
                                     );
                                   },
@@ -175,7 +194,7 @@ class _DeliveriesState extends State<Deliveries>
                                           "assets/images/edit_trip/drawable-xhdpi/group_3.png")),
                                 ),
                               )),
-                          Expanded(
+                      Expanded(
                             flex: 3,
                             child: Container(
                                 child: GestureDetector(
@@ -235,7 +254,7 @@ class _DeliveriesState extends State<Deliveries>
                                 )
                             ),
                           ),
-                          Expanded(flex: 1, child: Container()),
+                      Expanded(flex: 1, child: Container()),
                     ],
                   ),
                 ),

@@ -15,6 +15,6 @@ class AlbumProvider {
         throw Exception("Failed to load post");
       }
     }
-
 }
+
 

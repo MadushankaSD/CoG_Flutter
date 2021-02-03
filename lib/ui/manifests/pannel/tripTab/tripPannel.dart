@@ -1,9 +1,6 @@
 import 'package:cloudofgoods/blocs/AlbumBloc.dart';
 import 'package:cloudofgoods/models/album_model.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:hexcolor/hexcolor.dart';
 
 class Trip extends StatefulWidget {
@@ -12,6 +9,8 @@ class Trip extends StatefulWidget {
 }
 
 class _TripState extends State<Trip> {
+  var tripComplete = true;
+
 
   @override
   void initState() {
@@ -47,12 +46,11 @@ class _TripState extends State<Trip> {
                   );
                 } else {
                   return ListView.separated(
-                    separatorBuilder: (BuildContext context, int index) =>
-                        Divider(
+                    separatorBuilder: (BuildContext context, int index) => Divider(
                       color: Colors.black45,
                       indent: 10,
                       endIndent: 10,
-                      height: 10,
+                      height: 20,
                     ),
                     itemCount: snapshot.data.listOfAlbum.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -66,13 +64,12 @@ class _TripState extends State<Trip> {
                                 child: Row(
                                   children: [
                                     Expanded(
-                                      flex: 1,
                                       child: Container(
                                         child: Text(
                                           "20180814_SF_AM",
                                           style: TextStyle(
                                               color: HexColor("#4ea2e2"),
-                                              fontSize: 14,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
@@ -86,10 +83,7 @@ class _TripState extends State<Trip> {
                                           ),
                                           Container(
                                             decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                  bottomRight: Radius.circular(4),
-                                                  bottomLeft: Radius.circular(4)),
-                                              color: HexColor("#cc90ee90"),
+                                              color: HexColor("#cc90ee90"),//if incoming text is In-progress = #cc90ee90 , Not-started = #ccf0f0f0 , Completed-all success = #ccffdd9d , Completed-with failures = #ccff8989
                                               boxShadow: [
                                                 BoxShadow(
                                                   color: Colors.grey.withOpacity(0.5),
@@ -99,34 +93,16 @@ class _TripState extends State<Trip> {
                                                 ),
                                               ],
                                             ),
-                                            child: Text(
-                                                "Completed",textAlign: TextAlign.center,),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(5.0),
+                                              child: Text(
+                                                  "In-Progress",textAlign: TextAlign.center,),
+                                            ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: Container(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 40),
-                                          child: Container(
-                                            height: 30,
-                                            decoration: BoxDecoration(
-                                                color: HexColor("#5bafee"),
-                                                borderRadius:
-                                                    BorderRadius.circular(8)),
-                                            child: Center(
-                                                child: Text(
-                                              "Start  >",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            )),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                    if(tripComplete) buttonStartOrStop("Start"),
                                   ],
                                 ),
                               ),
@@ -278,6 +254,41 @@ class _TripState extends State<Trip> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget buttonStartOrStop(String value) {
+    return Container(
+      width: 100,
+      height: 30,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20),
+        child: RaisedButton(
+          padding: EdgeInsets.only(left: 15,right: 7),
+          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(7.0)),
+          onPressed: () {},
+          color: value == "Start"? Theme.of(context).accentColor:HexColor("#f5565e"),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                value,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+
+              Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.white,
+                size: 15,
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,8 +1,8 @@
-import 'package:cloudofgoods/ui/manifests/pannel/deliverTab/notifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './ui/home/homePage.dart';
 import './ui/splash_screen/splash.dart';
+import 'notifires/notifires_delivery.dart';
 
 void main() {
   // SystemChrome.setPreferredOrientations([
@@ -10,9 +10,12 @@ void main() {
   // ]);
   // WidgetsFlutterBinding.ensureInitialized();
 
+  // runApp(MyApp());
+
   runApp(MultiProvider(
       providers: [
-        ChangeNotifierProvider<SingleNotifier>(create: (_)=> SingleNotifier())
+        ChangeNotifierProvider<SingleNotifier>(create: (context)=> SingleNotifier()),
+        ChangeNotifierProvider<MultipleTripNotifier>(create: (context) => MultipleTripNotifier([])),
       ],
       child: MyApp(),
   ));
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home:SplashScreen(),
       routes: {
         'home':(context)=>Home(),
       },

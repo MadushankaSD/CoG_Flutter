@@ -11,6 +11,8 @@ class NestedTab extends StatefulWidget {
 }
 
 class NestedTabState extends State<NestedTab> with SingleTickerProviderStateMixin{
+  static int currentIndex;
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,9 @@ class NestedTabState extends State<NestedTab> with SingleTickerProviderStateMixi
               children: [
                 Expanded(
                   child: TabBar(
+                    onTap: (index){
+                      currentIndex = index;
+                    },
                     controller: super.widget.tabController,
                     isScrollable: true,
                     // indicatorColor: Colors.transparent,

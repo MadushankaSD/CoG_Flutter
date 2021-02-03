@@ -1,4 +1,7 @@
+import 'dart:collection';
+import 'package:cloudofgoods/models/trip_model.dart';
 import 'package:flutter/material.dart';
+import 'package:cloudofgoods/blocs/dummy_trip_block.dart';
 
 class SingleNotifier extends ChangeNotifier {
   Trip _selected_trip = tripList[0];
@@ -41,25 +44,31 @@ final List<Trip> tripList = [
 
 
 class MultipleTripNotifier extends ChangeNotifier {
-  List<AvaliableTrip> _selectedTrips;
+  List<String> _selectedTrips;
   MultipleTripNotifier(this._selectedTrips);
 
-  List<AvaliableTrip> get selectedTrips => _selectedTrips;
+  UnmodifiableListView<String> get selectedTrips => UnmodifiableListView(_selectedTrips);
 
-  bool isHaveValue(AvaliableTrip value) => _selectedTrips.contains(value);
+  bool isHaveValue(String value) {
+    return _selectedTrips.contains(value);
+  }
 
   addTrip(AvaliableTrip value){
-    if(!isHaveValue(value)){
-      _selectedTrips.add(value);
+    if(!isHaveValue(value.tripId)){
+      _selectedTrips.add(value.tripId);
+      tripBlock.addToMyTrip(value);
       notifyListeners();
     }
   }
 
   removeItem(AvaliableTrip value){
-    if(isHaveValue(value)){
-      _selectedTrips.remove(value);
+    if(isHaveValue(value.tripId)){
+      _selectedTrips.remove(value.tripId);
+      tripBlock.removeFromMyTrip(value);
       notifyListeners();
     }
-  }
+    }
+
 }
+
 

@@ -34,7 +34,6 @@ dependencies:
   google_fonts: ^1.1.1
   hexcolor: ^1.0.4
   circular_check_box: ^1.0.4
-  flutter_barcode_scanner: ^1.0.2
   connectivity: ^0.4.2
   grouped_list: ^3.7.1
   provider: ^4.3.3
@@ -42,6 +41,8 @@ dependencies:
   flutter_beep: ^0.2.0
   flutter_keyboard_visibility: ^4.0.2
   rxdart: ^0.25.0
+  email_validator: ^1.0.6
+  url_launcher: ^5.7.10
 #  flutter_local_notifications: ^3.0.3
 #  onesignal: ^1.1.0
 #  group_button: ^1.1.0
