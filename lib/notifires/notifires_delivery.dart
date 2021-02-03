@@ -1,7 +1,7 @@
 import 'dart:collection';
+import 'package:cloudofgoods/blocs/dummy_trip_block.dart';
 import 'package:cloudofgoods/models/trip_model.dart';
 import 'package:flutter/material.dart';
-import 'package:cloudofgoods/blocs/dummy_trip_block.dart';
 
 class SingleNotifier extends ChangeNotifier {
   Trip _selected_trip = tripList[0];
